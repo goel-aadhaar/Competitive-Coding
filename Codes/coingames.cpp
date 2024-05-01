@@ -15,19 +15,15 @@ int main(){
 
         if(countU&1 && countD&1){
             cout<<"YES"<<endl;
-            break;
         }
         else if(!(countU&1) && !(countD&1)){
             cout<<"NO"<<endl;
-            break;
         }
         else if(countU&1 && !(countD&1)){
             cout<<"YES"<<endl;
-            break;
         }
         else if(!(countU&1) && countD&1){
             cout<<"NO"<<endl;
-            break;
         }
         
     }
