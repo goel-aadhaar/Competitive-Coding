@@ -1,72 +1,40 @@
 #include<bits/stdc++.h>
 using namespace std;
-void prefixSum(vector<int>&v,int start,int end,vector<int>&ans){
-    int max=0;
-    for(int i=start;i<=end;i++){
-        max+=v[i];
-    }
-    if(v[end-1]<0)max-v[end-1];
-    ans.push_back(max);
+
+void solve(int i,int j,vector<int>& v,int *ans){
+    int a=i,b=j;                
+    while(a<b){if(v[a]<=0)a++;else break;}
+    while(a<b){if(v[b]<=0)b--;else break;}
+    int sum=0;
+    for(int k=a;k<=b;k++) sum+=v[k];
+    cout<<a<<" "<<b<<" "<<sum<<endl;
+    *ans=max(*ans,sum);
 }
+
 int main(){
-    int t;cin>>t;
+    int t;
+    cin>>t;
     while(t--){
-        int n;cin>>n;
-        vector<int>v(n);
-        for(int i=0;i<n;i++){
-            cin>>v[i];
+        int n;cin>>n;vector<int>v(n);for(int i=0;i<n;i++) cin>>v[i];
+        if(n==1){
+            cout<<v[0]<<endl;
+            continue;
         }
-        vector<int>ans;
-        int start=0,end=0;int i=0;
-        while(i<n){
-            if((v[i]+v[i+1])&1)i++;
+        int a=-1e4;
+        // int *ans=&a;
+        int i=0,j=0;
+        while(j<n){
+            if(j==0)j++;
+            if((v[j]+v[j-1])&1)j++;
             else {
-                end=i;
-                prefixSum(v,start,end,ans);
-                start=i+1;
-                i++;
+                solve(i,j-1,v,&a);
+                i=j;
+                j++;
             }
         }
-        // for(int i=0;i<n;i++){
-        //     cout<<prefixSum[i]<<" ";
-        // }
-        // cout<<endl;
-        // int maxi=INT_MIN;
-        // int maxdx=-1;
-        // for(int i=0;i<n;i++){
-        //     if(maxi<prefixSum[i]){
-        //         maxi=prefixSum[i];
-        //         maxdx=i;
-        //     }
-        // }
-        // // cout<<max<<endl;
-        // bool flag=true;
-        // int idx=0;
-        // for(int i=0;i<maxdx;i++){
-        //     if((v[i]+v[i+1])&1)continue;
-        //     else {
-        //         idx=i;
-        //         flag=false;
-        //     }
-        // }
-        // // cout<<idx<<endl;
-        // int negativeNum=0;
-        // if(flag==false){
-        //     for(int i=idx+1;i<maxdx;i++){
-        //         if (prefixSum[i]<0)negativeNum=prefixSum[i];
-        //     }
-        // }
-        // else {
-        //     for(int i=idx;i<maxdx;i++){
-        //         if (prefixSum[i]<0)negativeNum=prefixSum[i];
-        //     }
-        // }
-        // cout<<max(maxi-negativeNum,maxEle)<<endl;
-        for(int i=0;i<ans.size();i++){
-            cout<<ans[i]<<" ";
-        }
-        cout<<endl;
-        cout<<*max_element(ans.begin(),ans.end())<<endl;
+        solve(i,j-1,v,&a);
+        cout<<a<<endl;
+        
     }
-    return 0; 
+    return 0;
 }
