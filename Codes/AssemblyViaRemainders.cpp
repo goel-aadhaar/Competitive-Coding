@@ -11,11 +11,11 @@ int main(){
             cin>>v[i];
         }
         vector<int>ans(n);
-        ans[0]=3;
+        ans[0]=v[0]+1;
         for(int i=1;i<n;i++){
             ans[i]=ans[i-1]+v[i-1];
             if(i<=(n-2) && ans[i]<=v[i]){
-                while(ans[i]<v[i]){
+                while(ans[i]<=v[i]){
                     ans[i]*=2;
                     ans[i]-=v[i-1];
                 }
