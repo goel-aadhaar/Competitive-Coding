@@ -20,7 +20,7 @@ int main(){
     cin>>t;
     while(t--){
         int n;cin>>n;
-        ll c;cin>>c;vector<int>v(n);for(int i=0;i<n;i++) cin>>v[i];
+        ll c;cin>>c;vector<ll>v(n);for(int i=0;i<n;i++) cin>>v[i];
         solve(v,c,n);
         
     }
