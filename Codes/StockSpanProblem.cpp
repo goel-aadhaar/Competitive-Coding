@@ -27,43 +27,25 @@ using namespace std;
     std::cout.tie(nullptr);                \
     std::cin.tie(nullptr)
 typedef long long lli;
-
+ 
 #define BIT(x,i) ((x & (1LL << i)) > 0LL )
-void solve(){
-    lli n,k;cin>>n>>k;vlli v(n);f(i,0,n) cin>>v[i];
-    sort_arr(v);
-    // f(i,0,n) cout<<v[i]<<" ";
-    // cout<<endl;
-    vlli prefixSum(n);vlli suffixSum(n);
-    prefixSum[0]=v[0];suffixSum[n-1]=v[n-1];
-    int i=0;
-    f(i,1,n){
-        prefixSum[i]=prefixSum[i-1]+v[i];
+ void solve(){
+      int n;cin>>n;vi v(n);f(i,0,n) cin>>v[i];
+      stack<int>st;
+      st.push(0);
+    vector<int>ans(n);
+    ans[0]=1;
+    for(int i=1;i<n;i++){
+        if(!st.empty())while(!st.empty() && v[st.top()]<v[i]) st.pop();
+        if(st.empty())ans[i]=i+1;
+        else ans[i]=st.top();
+        st.push(i);
     }
-    // f(i,0,n) cout<<prefixSum[i]<<" ";
-    // cout<<endl;
-
-    fr(i,n-2,-1){
-        suffixSum[i]=suffixSum[i+1]+v[i];
+    for(int i=0;i<n;i++){
+        if(i==0)cout<<ans[i]<<" ";
+        else cout<<i-ans[i]<<" ";
     }
-    reverse_arr(suffixSum);
-    // f(i,0,n) cout<<suffixSum[i]<<" ";
-    // cout<<endl;
-    lli mini = 1e18;
-    int x =1;
-    int itr = k;itr--;
-    while(itr--){
-        lli ans = prefixSum[2*x - 1] + suffixSum[k-x-1];
-        mini =min(mini, ans);
-        x++;
     }
-    lli cps = prefixSum[2*k -1];
-    lli css = suffixSum[k -1];
-    mini=min(mini, cps);
-    mini=min(mini, css);
-
-    cout<<prefixSum[n-1]-mini<<endl;
-}
 int main(){
     fastio;
     int t;cin >> t;

@@ -1,40 +1,43 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void solve(int i,int j,vector<int>& v,int *ans){
-    int a=i,b=j;                
-    while(a<b){if(v[a]<=0)a++;else break;}
-    while(a<b){if(v[b]<=0)b--;else break;}
-    int sum=0;
-    for(int k=a;k<=b;k++) sum+=v[k];
-    cout<<a<<" "<<b<<" "<<sum<<endl;
-    *ans=max(*ans,sum);
-}
-
 int main(){
     int t;
     cin>>t;
     while(t--){
-        int n;cin>>n;vector<int>v(n);for(int i=0;i<n;i++) cin>>v[i];
-        if(n==1){
-            cout<<v[0]<<endl;
+        int n;cin>>n;
+        vector<int>nums(n);
+        for(int i=0;i<n;i++) cin>>nums[i];
+        int sum =0;
+        int ansMax=INT_MIN;
+        int maxi =INT_MIN;
+        int ans = *max_element(nums.begin(),nums.end());
+        if(ans<=0){
+            cout<<ans<<endl;
             continue;
         }
-        int a=-1e4;
-        // int *ans=&a;
-        int i=0,j=0;
-        while(j<n){
-            if(j==0)j++;
-            if((v[j]+v[j-1])&1)j++;
-            else {
-                solve(i,j-1,v,&a);
-                i=j;
-                j++;
+        int a=0,b=0;
+        for(int j=0;j<n-1;j++){
+            if((nums[j]+nums[j+1])&1){
+                b++;
+            }
+            else{
+                for(int i=a;i<=b;i++){
+                    sum = max(0,sum+nums[i]);
+                    maxi = max(maxi,sum);
+                }
+                ansMax=max(maxi,ansMax);
+                sum=0;maxi=0;
+                a = b+1;
+                b++;
             }
         }
-        solve(i,j-1,v,&a);
-        cout<<a<<endl;
-        
+        for(int i=a;i<=b;i++){
+            sum = max(0,sum+nums[i]);
+            maxi = max(maxi,sum);
+        }
+        ansMax=max(maxi,ansMax);
+        cout<<ansMax<<endl;
     }
     return 0;
 }
