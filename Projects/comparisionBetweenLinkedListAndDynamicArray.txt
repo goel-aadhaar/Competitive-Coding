@@ -37,3 +37,13 @@ Linkedlist-(Time Complexity) | (Space Complexity):
     middle -              O(n) | O(1)
     firstOccurrence -     O(n) | O(1)
     print -               O(n) | O(1)
+
+
+
+Advantages and Diadvantages-
+-In operations like inserting at a given index or appending an element dynamic arrays are slow, while in linked lists we can just add a node in between to insert an element which reduces the time complexity.
+-Extra memory is consumed to do some operations in linked lists.
+-dynamic array is contigous while linked list is not contigous.
+-dynamic arrays need to resized when their capacity is full while this is not the case in linked list.
+-accessing the element is quick in Darrays while it is slow in linked list.
+-both have different and important applications in programming
