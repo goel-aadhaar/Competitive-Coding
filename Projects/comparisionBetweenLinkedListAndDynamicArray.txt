@@ -1,0 +1,39 @@
+Comparision of Linkedlist and Dynamic Arrays
+
+
+Dynamic Arrays-(Time Complexity) | (Space Complexity):
+    getSize -             O(1) | O(1)
+    doubleSize -          O(n) | O(n)
+    insertAtEnd -         O(1) | O(1)
+    insertAt -            O(n) | O(1)
+    insertAtBeginning -   O(n) | O(1)
+    isEmpty -             O(1) | O(1)
+    deleteAtIdx -         O(n) | O(1)
+    deleteAtBeginning -   O(n) | O(1)
+    deleteAtEnd -         O(1) | O(1)
+    reverse -             O(n) | O(n)
+    rotate -              O(n) | O(n)
+    merge -               O(n) | O(n)
+    interleave -          O(n) | O(n)
+    middle -              O(1) | O(1)
+    firstOccurrence -     O(n) | O(1)
+    print -               O(n) | O(1)
+
+
+
+Linkedlist-(Time Complexity) | (Space Complexity):
+    getSize -             O(1) | O(1)
+    insertAtEnd -         O(1) | O(1) {with tail}
+    insertAt -            O(n) | O(1)
+    insertAtBeginning -   O(1) | O(1)
+    isEmpty -             O(1) | O(1)
+    deleteAtIdx -         O(1) | O(1)
+    deleteAtBeginning -   O(1) | O(1)
+    deleteAtEnd -         O(1) | O(1)
+    reverse -             O(n) | O(n)
+    rotate -              O(n) | O(1)
+    merge -               O(n) | O(1)
+    interleave -          O(n) | O(1)
+    middle -              O(n) | O(1)
+    firstOccurrence -     O(n) | O(1)
+    print -               O(n) | O(1)

@@ -109,7 +109,7 @@ class LinkedList {
         if(head->next == NULL) return head;
         Node* last = head;
         int len =1;
-        while (last->next != NULL) {
+        while(last->next!=NULL) {
             last = last->next;
             len++;
         }

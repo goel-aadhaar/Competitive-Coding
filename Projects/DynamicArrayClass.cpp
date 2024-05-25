@@ -35,7 +35,7 @@ class Darray {
     }
     void deleteAtIdx(int idx) {
         if (idx < 0 || idx >= size) throw out_of_range("Index out of Bounds!!!");
-        for(int i=idx;i<size -1;i++) arr[i]= arr[i + 1];
+        for(int i=idx;i<size -1;i++) arr[i]= arr[i+1];
         size--;
     }
     bool isEmpty() {return size==0;}
@@ -54,9 +54,9 @@ class Darray {
         reverse(0,n -1);
         reverse(n,size -1);
     }
-    void append(int data) {insertAtIdx(size,data);}
+    void insertAtEnd(int data) {insertAtIdx(size,data);}
 
-    void prepend(int data){insertAtIdx(0, data);}
+    void insertAtBeginning(int data){insertAtIdx(0, data);}
 
     void merge(int* brr, int b_size) {
         int newSize = size+b_size;
@@ -111,8 +111,8 @@ class Darray {
 
 int main() {
     Darray aadhaar;
-    aadhaar.append(37);
-    aadhaar.prepend(4);
+    aadhaar.insertAtBeginning(37);
+    aadhaar.insertAtEnd(4);
     aadhaar.print();
     cout<<aadhaar.middle()<<endl;
     int vrr[5] ={1,2,3,4,5};
