@@ -29,27 +29,37 @@ using namespace std;
 typedef long long lli;
  
 #define BIT(x,i) ((x & (1LL << i)) > 0LL )
+string decToBin(int n){
+    string str="";
+    for(int i=1;i<=32;i++){
+        str+=((n&1)?'1':'0');
+        n>>=1;
+    }
+    return str;
+}
  void solve(){
-      int n;cin>>n;vlli v(n);f(i,0,n) cin>>v[i];
-      lli x,y;
-      sort(all(v));
-      vlli h;
-      x = v[0];
-      f(i,0,n){
-        if(v[i]%x)h.push_back(v[i]);
-      }
-      if(h.size()==0){
-        cout<<"Yes"<<endl;
-        return;
-      }
-      sort(all(h));
-      for(int i=0;i<n;i++){
-        if(v[i]%v[0] && v[i]%h[0]){
-            cout<<"No"<<endl;
-            return;
+      int n;cin>>n;
+      string s = decToBin(n);
+      vector<char>v;
+    for(int i=0;i<31;i++){
+        if(s[i] == '1' && s[i+1] == '1'){
+            int a =i,b=i;
+            while(s[b]!='0'){
+                s[b]='0';
+                b++;
+            }
+            s[b]='1';
+            s[a]='3';
+            i=b-1;
         }
-      }
-      cout<<"Yes"<<endl;
+    }
+    cout<<32<<endl;
+    for(int i=0;i<32;i++){
+        if(s[i]=='0')cout<<0<<" ";
+        else if(s[i]=='1')cout<<1<<" ";
+        else cout<<-1<<" ";
+    }
+    cout<<endl;
       
     }
 int main(){

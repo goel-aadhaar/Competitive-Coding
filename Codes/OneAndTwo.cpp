@@ -30,27 +30,22 @@ typedef long long lli;
  
 #define BIT(x,i) ((x & (1LL << i)) > 0LL )
  void solve(){
-      int n;cin>>n;vlli v(n);f(i,0,n) cin>>v[i];
-      lli x,y;
-      sort(all(v));
-      vlli h;
-      x = v[0];
-      f(i,0,n){
-        if(v[i]%x)h.push_back(v[i]);
-      }
-      if(h.size()==0){
-        cout<<"Yes"<<endl;
+      int n;cin>>n;vi v(n);f(i,0,n) cin>>v[i];
+      int count=0;
+      f(i,0,n) if(v[i]==2)count++;
+      if(count&1){
+        cout<<-1<<endl;
         return;
       }
-      sort(all(h));
-      for(int i=0;i<n;i++){
-        if(v[i]%v[0] && v[i]%h[0]){
-            cout<<"No"<<endl;
-            return;
-        }
+      count/=2;
+      int i=0;
+      while(count){
+        if(v[i]==2)count--;
+        if(!count)break;
+        i++;
       }
-      cout<<"Yes"<<endl;
-      
+      cout<<i+1<<endl;
+
     }
 int main(){
     fastio;
