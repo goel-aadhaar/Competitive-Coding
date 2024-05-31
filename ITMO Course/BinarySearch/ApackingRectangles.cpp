@@ -27,18 +27,32 @@ using namespace std;
     std::cout.tie(nullptr);                \
     std::cin.tie(nullptr)
 typedef long long lli;
- 
 #define BIT(x,i) ((x & (1LL << i)) > 0LL )
+bool check(lli w, lli h, lli n, lli mid){
+    if((log10(mid/w) + log10(mid/h))>=9)return true;
+    lli ans = (mid/w)*(mid/h);
+    return ans >=n;
+}
  void solve(){
-      int w,h,n;cin>>w>>h>>n;
-      
+      lli w,h,n;cin>>w>>h>>n;
+      lli lo = 0,hi = 1e15; lli ans =0;
+      while(lo+1<hi){
+        lli mid = lo+(hi-lo)/2;
+        if(check(w, h, n, mid)){
+            ans = mid;
+            hi = mid;
+        }
+        else lo=mid;
+      }
+      if(check(w, h, n, lo)){
+        cout<<lo<<endl;
+        return;
+      }
+      cout<<ans<<endl; 
       
     }
-int main(){
+signed main(){
     fastio;
-    int t;cin >> t;
-    while(t--){
-        solve();
-    }  
+    solve();
     return 0;
 }
