@@ -20,18 +20,38 @@ using namespace std;
 #define MOD2 1000000007
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 typedef long long lli;
+
+bool check(lli mid, vi v, int n, int k){
+    int count = 1;
+    int dif = v[0];
+    for(int i = 1; i < n; i++){
+        if(v[i] - dif >= mid){
+            count++;
+            dif = v[i];
+        }
+    }
+    return count >= k;
+}
+
 void solve() {
     int n, k; cin >> n >> k;
+    lli ans = 0;
     vi v(n); f(i, 0, n) cin >> v[i];
     lli lo = 0, hi = 1e9;
     while(lo <= hi){
         lli mid = lo + (hi - lo) / 2;
-        if (check(mid, ))
+        if (check(mid, v, n, k)){
+            ans = mid;
+            lo = mid + 1;
+        }
+        else hi = mid - 1;
     }
+    cout << ans << endl;
 }
+
 int main() {
     fastio;
-    int t; cin >> t;
-    while (t--)
+    // int t; cin >> t;
+    // while (t--)
         solve();
 }
