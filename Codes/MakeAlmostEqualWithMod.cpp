@@ -44,20 +44,17 @@ lli gcdArray(vector<lli>& arr) {
 void solve() {
     int n; cin >> n; vlli arr(n); f(i, 0, n) cin >> arr[i];
     lli gcd_ = gcdArray(arr);
-    p(2*gcd_);
-    // vector<int> factors;
-    // for (int i = 2; i * i <= n; i++) {
-    //     while (n % i == 0) {
-    //         factors.push_back(i);
-    //         n /= i;
-    //     }
-    // }
-    // if (n > 1) {
-    //     factors.push_back(n);
-    // }
-    // f(i,0,n){
-
-    // }
+    lli ans = 2 * gcd_;
+    
+    while(true){
+        set<lli> v;
+        for(int i=0 ;i<n; i++) v.insert(arr[i] % ans);
+        if(v.size() == 2){
+            p(ans);
+            return;
+        }
+        ans *= 2;
+    }
 }
 int main() {
     fastio; int t; cin >> t; while (t--) { solve(); } return 0;
