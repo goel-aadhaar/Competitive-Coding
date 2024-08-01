@@ -18,11 +18,7 @@ using namespace std;
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 void solve() {
     int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
-    }
-    else p(n / 4);
+    vi v(n); for(int i = 0; i < n; i++) cin >> v[i];
 }
 signed main() {
     fastio;

@@ -1,48 +1,32 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<string> vs;
-typedef vector<char> vc;
-#define Mod 1000000007
-#define endl "\n"
+#define all(arr) arr.begin(), arr.end()
+#define vi vector<int>
+#define vvi vector<vi>
+#define int int64_t
 #define YES cout << "YES" << endl;
 #define NO cout << "NO" << endl;
-#define pb push_back
-#define SORT(x) sort(x.begin(),x.end());
-#define For(i,n) for(int i=0;i<n;i++) 
-#define Forl(i,a,n) for(int i=a;i<n;i++) 
-#define Forr(i,n,a) for(int i=n;i>=a;i--) 
-void solve(){
-    // int n; cin >> n; vi v(n);
-    // Your code logic here
+#define p(x) cout << (x) << endl;
+#define sp(x) cout << (x) << " ";
+#define endl '\n'
+#define mxv(arr) *max_element(arr.begin(), arr.end())
+#define mnv(arr) *min_element(arr.begin(), arr.end())
+#define smv(arr) accumulate(arr.begin(), arr.end(), 0LL)
+#define srt(arr) sort(arr.begin(), arr.end())
+#define rev(arr) reverse(all(arr))
+#define MOD2 1000000007
+#define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
+void solve() {
     int a,b,c;
     cin>>a>>b>>c;
-    if((c-b)%a ==0 && (c-b)/a >=0 && b!=c){
-        YES
-    }
-    else if((a+c)%2*b ==0 && (a+c)/2*b >=0 && a+c !=0){
-        YES
-    }
-    else if((2*b-a)%c ==0 && (2*b-a)/c >=0 && 2*b-a !=0){
-        YES
-    }
-    else if(a==b){
-        if(c<a && a%c==0)YES
-    }
-    else if(b==c){
-        if(a<b && b%a==0)YES
-    }
-    else if(a==c){
-        if(b<a && a%b==0)YES
-    }
+    if((a + c) % (b * 2) == 0) YES
+    else if((2 * b - c) > 0 && (2 * b - c) % a == 0) YES
+    else if((2 * b - a) > 0 && (2 * b - a) % c == 0) YES
     else NO
 }
-int main(){
-    int T;
-    cin >> T;
-    while(T--){
+signed main() {
+    fastio;
+    int t; cin >> t;
+    while (t--)
         solve();
-    }
-    return 0;
 }

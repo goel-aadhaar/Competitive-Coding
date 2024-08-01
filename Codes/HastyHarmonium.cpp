@@ -17,16 +17,25 @@ using namespace std;
 #define MOD2 1000000007
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 void solve() {
-    int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
+    string str;
+    cin >> str;
+    int mndx = 0;
+    for(int i = 0; i < str.length() - 1; i++){
+        if(str[mndx] > str[i]) mndx = i;
     }
-    else p(n / 4);
+    string s = "";
+    s += str[mndx];
+    int sdx = mndx + 1;
+    for(int i = mndx + 1; i < str.length(); i++){
+        if(str[sdx] > str[i]) sdx = i;
+    }
+    s += str[sdx];
+    p(s);
+
 }
 signed main() {
     fastio;
-    int t; cin >> t;
-    while (t--)
+    // int t; cin >> t;
+    // while (t--)
         solve();
 }

@@ -17,16 +17,16 @@ using namespace std;
 #define MOD2 1000000007
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 void solve() {
-    int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
+    int n , m; cin >> n >> m;
+    n++;
+    while(n % m != 0) {
+        n++;
     }
-    else p(n / 4);
+    p(n); 
 }
 signed main() {
     fastio;
-    int t; cin >> t;
-    while (t--)
+    // int t; cin >> t;
+    // while (t--)
         solve();
 }

@@ -18,15 +18,17 @@ using namespace std;
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 void solve() {
     int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
-    }
-    else p(n / 4);
+    vi v(n); for(int i = 0; i < n; i++) cin >> v[i];
+    srt(v);
+    auto it = unique(v.begin(), v.end());
+    v.resize(distance(v.begin(), it));
+    int a = v.back() - v.front();
+    int b = 360 - v.back() + v[v.size() - 2];
+    p(min(a , b) + 1);
 }
 signed main() {
     fastio;
-    int t; cin >> t;
-    while (t--)
+    // int t; cin >> t;
+    // while (t--)
         solve();
 }

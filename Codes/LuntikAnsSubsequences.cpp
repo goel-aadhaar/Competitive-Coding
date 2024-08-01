@@ -6,7 +6,7 @@ using namespace std;
 #define int int64_t
 #define YES cout << "YES" << endl;
 #define NO cout << "NO" << endl;
-#define p(x) cout << (x) << endl;
+#define p(x) cout << (x) << endl
 #define sp(x) cout << (x) << " ";
 #define endl '\n'
 #define mxv(arr) *max_element(arr.begin(), arr.end())
@@ -18,11 +18,22 @@ using namespace std;
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 void solve() {
     int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
+    int cnt0 = 0 , cnt1 = 0;
+    vi v(n); for(int i = 0; i < n; i++) {
+        cin >> v[i];
     }
-    else p(n / 4);
+    for(int i = 0; i < n; i++) {
+        if(v[i] == 0) cnt0 ++;
+        else if(v[i] == 1) cnt1 ++;
+    }
+    // p(cnt0);
+    // p(cnt1);
+    if(!cnt0 && !cnt1){
+        p(0);
+        return;
+    }
+    cnt0 && cnt0 != 1? p((int)cnt1 * (int)pow(2 , cnt0)) : p(cnt1 * (int)pow(2 , cnt0));
+
 }
 signed main() {
     fastio;

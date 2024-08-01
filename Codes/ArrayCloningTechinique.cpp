@@ -16,13 +16,24 @@ using namespace std;
 #define rev(arr) reverse(all(arr))
 #define MOD2 1000000007
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
+
 void solve() {
     int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
+    vi v(n); for(int i = 0; i < n; i++) cin >> v[i];
+    map<int, int> freqMap;
+    int mx = 0;
+    for (int num : v) {
+        freqMap[num]++;
+        mx = max(mx , freqMap[num]);
     }
-    else p(n / 4);
+
+    int x = mx;
+    int cnt = 0;
+    while(mx < n){
+        cnt++;
+        mx *= 2;
+    }
+    p(cnt + n - x);
 }
 signed main() {
     fastio;

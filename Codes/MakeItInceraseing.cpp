@@ -18,11 +18,22 @@ using namespace std;
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 void solve() {
     int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
+    vi v(n); for(int i = 0; i < n; i++) cin >> v[i];
+    int cnt = 0 , times = 0;
+    reverse(v.begin() , v.end());
+    for(int i = 0; i < n - 1; i++){
+        times = 0;
+        while(v[i] <= v[i + 1]){
+            cnt ++;
+            v[i + 1] /= 2;
+            times ++;
+            if(times > 32){
+                p(-1);
+                return;
+            }
+        }
     }
-    else p(n / 4);
+    p(cnt);
 }
 signed main() {
     fastio;

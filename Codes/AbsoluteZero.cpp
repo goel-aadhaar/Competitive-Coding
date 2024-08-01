@@ -16,13 +16,39 @@ using namespace std;
 #define rev(arr) reverse(all(arr))
 #define MOD2 1000000007
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
+
+long long customCeil(long long num, long long den) {
+    return (num + den - 1) / den;
+}
+
 void solve() {
     int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
+    vector<long long> v(n); for(int i = 0; i < n; i++) cin >> v[i];
+    if(count(v.begin() , v.end() , 0) == n) {
+        p(0);  
+        p(" ");
+        return;
     }
-    else p(n / 4);
+    vector<long long> ans;
+    long long sum = 0;
+    int x = 40;
+    while(x--){
+        sum = (mxv(v) + mnv(v)) / 2;
+        for(int i = 0; i < n; i++){
+            v[i] -= sum;
+            v[i] = abs(v[i]);
+        }
+        ans.push_back(sum);
+        if(count(v.begin() , v.end() , 0) == n) break;
+    }
+    if(count(v.begin() , v.end() , 0) == n){
+        p(ans.size());
+        for(int ele : ans){
+            sp(ele);
+        }
+    }
+    else p(-1);
+    cout<<endl;
 }
 signed main() {
     fastio;

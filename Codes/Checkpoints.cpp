@@ -17,16 +17,36 @@ using namespace std;
 #define MOD2 1000000007
 #define fastio ios_base::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr)
 void solve() {
-    int n; cin >> n;
-    // int x = n % 4;
-    if(n % 4){
-        p(n / 4 + 1);
+    int n , m; cin >> n >> m;
+    multiset<int> v; 
+    for(int i = 0; i < n; i++){
+        int x;
+        cin >> x;
+        v.insert(x);
     }
-    else p(n / 4);
+    vector<string> q(m);
+    vi idx(m);
+    for(int i = 0; i < m; i++) {
+        cin >> q[i];
+        cin >> idx[i];
+    }
+    for(int i = 0; i < m; i++){
+        if(q[i][0] == 'D'){
+            v.erase(v.find(idx[i]));
+        }
+        else{
+            v.insert(idx[i]);
+        }
+        if(v.empty()){
+            p(0);
+            continue;
+        }
+        int l = *(--v.end());
+        int f = *(v.begin());
+        p(l - f);
+    }
 }
 signed main() {
     fastio;
-    int t; cin >> t;
-    while (t--)
         solve();
 }
